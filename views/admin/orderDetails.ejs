@@ -70,7 +70,6 @@
                                     <p class="mb-1">
                                         <%= orders.user_id.username %> <br> <%= orders.user_id.email %> <br> <%= orders.user_id.mobile %>
                                     </p>
-                                    <a href="#">View profile</a>
                                 </div>
                             </article>
                         </div> <!-- col// -->
@@ -84,7 +83,6 @@
                                     <p class="mb-1">
                                         Payment method: <%= orders.payment_method %> <br> Payment Status: <%= orders.payment_status %>
                                     </p>
-                                    <a href="#">Download info</a>
                                 </div>
                             </article>
                         </div> <!-- col// -->
@@ -98,7 +96,6 @@
                                     <p class="mb-1">
                                         <%= orders.address.address %> <br> <%= orders.address.city %>,<%= orders.address.district %>,<%= orders.address.state %> <br> <%= orders.address.pincode%>
                                     </p>
-                                    <a href="#">View profile</a>
                                 </div>
                             </article>
                         </div> <!-- col// -->
@@ -189,6 +186,7 @@
                             </div> <!-- table-responsive// -->
                         </div> <!-- col// -->
                         <div class="col-lg-1"></div>
+                        <% if (orders.payment_method=='online payment') { %>
                         <div class="col-lg-4">
                             <div class="box shadow-sm bg-light">
                                 <h6 class="mb-15">Payment info</h6>
@@ -199,6 +197,7 @@
                                 </p>
                             </div>
                         </div> <!-- col// -->
+                        <% } %>
                     </div>
                 </div> <!-- card-body end// -->
             </div> <!-- card end// -->

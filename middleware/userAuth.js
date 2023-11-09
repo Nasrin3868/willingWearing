@@ -16,7 +16,6 @@ const iflogin=async(req,res,next)=>{
 }
 
 const islogout=async(req,res,next)=>{
-    console.log("logout middleware")
     req.session.user=null;
     next()
 }

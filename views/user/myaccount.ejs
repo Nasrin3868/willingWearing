@@ -111,7 +111,7 @@ $(document).ready(function () {
                                                                 <% } %>
                                                             </td>
                                                             <!-- Update the line to display quantity for each order -->
-                                                            <td style="width: 20%;"><%= Order.actualTotalAmount %> for <%= Order.quantity %> item</td>
+                                                            <td style="width: 20%;"><%= Order.finalAmount%> for <%= Order.quantity %> item</td>
                                                             <td style="width: 15%;"><a href="/orderDetails/<%= Order._id %>" class="btn-small d-block">View Details</a></td>
                                                         </tr>
                                                     <%}) %>

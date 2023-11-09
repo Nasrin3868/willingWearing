@@ -171,18 +171,18 @@
             </div>
             <div class="mobile-header-content-area">
                 <div class="search-style-2 pb-20">
-                    <form action="#" id="categorySearchForm">
+                    <!-- <form action="#" id="categorySearchForms">
                         <select class="select-active" onchange="location = this.value;">
                             <option value="/">All Categories</option>
                             <% categories.forEach(function(category) { %>
                                 <option value="/showbycategory/<%= category.name %>"><%= category.name %></option>
                             <% }); %>
                         </select>
-                    </form>
-                    <form method="post" action="/searchCategory" onsubmit="return validateName()" id="productSearchForm">
+                    </form> -->
+                    <form method="post" action="/searchCategory" onsubmit="return validateNames()" id="productSearchForm">
                         <button class="text-start" type="submit"></button>
-                        <input type="text" id="categorySearchInput" placeholder="Search for items by name..." name="search">
-                        <span id="searchError" style="color: red;"></span>
+                        <input type="text" id="categorySearchInputs" placeholder="Search for items by name..." name="search">
+                        <span id="searchErrors" style="color: red;"></span>
                     </form>
                 </div>
                 <div class="mobile-menu-wrap mobile-header-border pb-0">
@@ -231,16 +231,7 @@
     <script>
         document.getElementById('categorySearchForm').addEventListener('submit', function (e) {
             e.preventDefault();
-            // const searchInput = document.getElementById('categorySearchInput').value.toLowerCase();
             const categoryOptions = document.querySelectorAll('.select-active option');
-    
-            // for (const option of categoryOptions) {
-            //     const categoryName = option.textContent.toLowerCase();
-            //     if (categoryName === searchInput) {
-            //         location.href = option.value;
-            //         break;
-            //     }
-            // }
         });
 
         function validateName(){
@@ -269,4 +260,29 @@
             return true
         }
         
+        function validateNames(){
+            var categorySearchInput = document.getElementById('categorySearchInputs').value;
+
+            document.getElementById('searchErrors').innerHTML = '';
+
+            const nameRegex = /^[a-zA-Z\s]*$/;
+            
+            if(categorySearchInput==''||categorySearchInput.trim()==''){
+                document.getElementById('searchErrors').innerHTML = 'Name is required.';
+                setTimeout(function() {
+                    document.getElementById('searchErrors').innerHTML = '';
+                }, 5000);
+                return false;
+            }
+
+            if(!categorySearchInput.match(nameRegex)){
+                document.getElementById('searchErrors').innerHTML = 'Name is required.';
+                setTimeout(function() {
+                    document.getElementById('searchErrors').innerHTML = '';
+                }, 5000);
+                return false;
+            }
+
+            return true
+        }
     </script>

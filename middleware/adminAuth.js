@@ -17,7 +17,6 @@ const isloggedin = (req, res, next) => {
   };
 
 const islogout=async(req,res,next)=>{
-    console.log("logout middleware")
     if(!req.session.admin){
     next()
     }else{
