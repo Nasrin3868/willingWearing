@@ -43,10 +43,12 @@
                 </div>
             </div>
             <div class="col-lg-9">
-                <!-- End nav-tabs -->
+                <!-- End nav-tabs -->   
                 <div class="tab-content wow fadeIn animated" id="myTabContent">
-                    <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
+                        <% if (products && products.length > 0) { %>
+                            <div class="tab-pane fade show active" id="tab-one" role="tabpanel" aria-labelledby="tab-one">
                         <div class="row product-grid-4">
+
                             <% let count = 0; %>
                             <% products.forEach(function(product) { %>
                                 <div class="col-lg-4 col-md-4 col-12 col-sm-6">
@@ -115,6 +117,21 @@
                             <% }) %>
                         </div>
                     </div>
+                    <% } else { %>
+                        <div class="container ">
+                            <div class="row justify-content-center align-items-center pt-50 pb-50">
+                                <div class="col-lg-5">
+                                    <div class="padding_eight_all bg-white">
+                                        <div class="alert text-center" role="alert">
+                                            <h4 class="pt-15" style="color: rgb(183, 18, 18);">Everything sold out...!</h4>
+                                            <h4 class="pt-25" style="color: rgb(18, 122, 89);">We will fill it up soon</h4>
+                                            <h4 class="pt-15" style="color: rgb(18, 122, 89);">Come back later :)</h4>
+                                        </div>
+                                    </div>
+                                </div> 
+                            </div>
+                        </div>
+                    <% } %>
                     <!-- End tab one (Featured) -->
                 </div>
                 <!-- End tab-content -->

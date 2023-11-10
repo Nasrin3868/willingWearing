@@ -210,6 +210,8 @@ const dologin = async (req, res) => {
           res.redirect(`/login?err=${true}&msg=Password donot match`);
         }
       });
+    } else if(data && data.blocked == true){
+      res.redirect(`/login?err=${true}&msg=This user is blocked`);
     } else {
       res.redirect(`/login?err=${true}&msg=User not found`);
     }

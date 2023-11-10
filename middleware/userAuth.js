@@ -1,3 +1,4 @@
+const collection = require("../model/mongodb");
 
 const islogin=async(req,res,next)=>{
     if(req.session.user){
@@ -22,7 +23,13 @@ const islogout=async(req,res,next)=>{
 
 const cartAuth=async(req,res,next)=>{
     if(req.session.user){
-        next()
+        const user=await collection.findOne({_id:req.session.user._id})
+        if(user.blocked==false){
+            next()
+        }else{
+            req.session.user=null
+            res.redirect("/login")
+        }
     }else{
         res.redirect("/login")
     }

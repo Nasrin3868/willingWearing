@@ -148,7 +148,6 @@ const quantityIncrease = async (req, res) => {
     const existingCartItem = user.cart.find(
       (item) => item.product.toString() === productId
     );
-
     // Update the cart based on whether the product exists or not
     if (existingCartItem) {
       if (product.stock > existingCartItem.quantity) {

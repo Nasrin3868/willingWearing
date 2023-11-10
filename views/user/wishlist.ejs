@@ -20,32 +20,34 @@
                             </thead>
                             <tbody>
                                 <% userdata.wishlist.forEach(wishlist => { %>
-                                    <tr>
-                                        <td class="image product-thumbnail">
-                                            <a href="/productview/<%= wishlist._id %>">
-                                                <img src="<%= wishlist.images[0] %>" alt="Product Image">
-                                            </a>
-                                        </td>
-                                        <td class="product-des product-name">
-                                            <h5 class="product-name"><a style="color: rgb(16, 117, 137);"><%= wishlist.name %></a></h5>
-                                            <p  class="font-xs"><%= wishlist.description %></p>
-                                        </td>
-                                        <td class="price" data-title="Price"><span><%= wishlist.price %> </span></td>
-                                        <td class="price" data-title="Price"><span><%= wishlist.sellingprice %> </span></td>
-                                        <td class="text-center" data-title="Stock">
-                                                <span class="color3 font-weight-bold"><%= wishlist.stock %></span>
-                                        </td>
-                                        <td class="text-right" data-title="Cart">
-                                            <% if (wishlist.stock == 0) { %>
-                                                <p style="color: red;">Out of Stock</p>
-                                            <% } else { %>
-                                                <a aria-label="Add To Cart" class="btn btn-sm" onclick="itemsToCart('<%= wishlist._id %>')">Add to cart</a>
-                                            <% } %>
-                                        </td>                                        
-                                        <td class="action" data-title="Remove">
-                                            <a href="/wishlistProductDelete/<%= wishlist._id %>"><i class="fi-rs-trash"></i></a>
-                                        </td>
-                                    </tr>
+                                    <% if(wishlist.blocked==false){ %>
+                                        <tr>
+                                            <td class="image product-thumbnail">
+                                                <a href="/productview/<%= wishlist._id %>">
+                                                    <img src="<%= wishlist.images[0] %>" alt="Product Image">
+                                                </a>
+                                            </td>
+                                            <td class="product-des product-name">
+                                                <h5 class="product-name"><a style="color: rgb(16, 117, 137);"><%= wishlist.name %></a></h5>
+                                                <p  class="font-xs"><%= wishlist.description %></p>
+                                            </td>
+                                            <td class="price" data-title="Price"><span><%= wishlist.price %> </span></td>
+                                            <td class="price" data-title="Price"><span><%= wishlist.sellingprice %> </span></td>
+                                            <td class="text-center" data-title="Stock">
+                                                    <span class="color3 font-weight-bold"><%= wishlist.stock %></span>
+                                            </td>
+                                            <td class="text-right" data-title="Cart">
+                                                <% if (wishlist.stock == 0) { %>
+                                                    <p style="color: red;">Out of Stock</p>
+                                                <% } else { %>
+                                                    <a aria-label="Add To Cart" class="btn btn-sm" onclick="itemsToCart('<%= wishlist._id %>')">Add to cart</a>
+                                                <% } %>
+                                            </td>                                        
+                                            <td class="action" data-title="Remove">
+                                                <a href="/wishlistProductDelete/<%= wishlist._id %>"><i class="fi-rs-trash"></i></a>
+                                            </td>
+                                        </tr>
+                                    <% } %>
                                 <% }); %>
                             </tbody>
                         </table>
